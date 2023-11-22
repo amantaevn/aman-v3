@@ -29,18 +29,18 @@ services:
 
   #database
   postgres:
-      image: bitnami/postgresql:latest
+      image: postgres:latest
       container_name: ${APP_NAME}-postgres
-      restart: on-failure
+      restart: always
       tty: true
       ports:
           - "5432:5432"
       environment:
-          - POSTGRESQL_PASSWORD=${DB_PASSWORD}
-          - POSTGRESQL_DATABASE=${DB_DATABASE}
-          - POSTGRESQL_USERNAME=${DB_USERNAME}
+          - POSTGRES_PASSWORD=${DB_PASSWORD}
+          - POSTGRES_DATABASE=${DB_DATABASE}
+          - POSTGRES_USERNAME=${DB_USERNAME}
       volumes:
-          - database:/bitnami/postgresql
+          - database:/var/lib/postgresql/data
       networks:
           - common
 
